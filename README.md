@@ -1,6 +1,6 @@
 
 # aseprite#
-### a simple aseprite c# parser
+### a simple c# aseprite file parser
 
 #### Aseprite Resources
 https://www.aseprite.org/
