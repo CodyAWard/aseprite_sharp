@@ -1,5 +1,5 @@
 
-# aseprite_sharp
+# aseprite#
 ### a simple aseprite c# parser
 
 #### Aseprite Resources
