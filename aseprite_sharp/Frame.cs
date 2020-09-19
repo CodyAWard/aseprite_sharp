@@ -10,14 +10,22 @@ namespace aseprite_sharp
         public ushort FrameDuration { get; }
 
         public IChunk[] Chunks { get; }
-        public T TryGet<T>() where T : class, IChunk
+        public bool TryGet<T>(out T chunk) where T : class, IChunk
         {
-            return TryGetAll<T>().FirstOrDefault();
+            if (TryGetAll<T>(out var chunks))
+            {
+                chunk = chunks.FirstOrDefault();
+                return chunk != null;
+            }
+
+            chunk = null;
+            return false;
         }
 
-        public IEnumerable<T> TryGetAll<T>() where T : class, IChunk
+        public bool TryGetAll<T>(out IEnumerable<T> chunks) where T : class, IChunk
         {
-            return Chunks.OfType<T>();
+            chunks = Chunks.OfType<T>();
+            return chunks.Any();
         }
 
         private Frame(uint bytesInFrame, ushort frameDuration, IChunk[] chunks)
