@@ -69,36 +69,28 @@ namespace aseprite_sharp
                 switch (type)
                 {
                     case 0x2004:
-                        Console.WriteLine("Layer Chunk " + type + " : " + size + "b");
                         chunks[i] = LayerChunk.Read(reader);
                         break;
                     case 0x2005:
-                        Console.WriteLine("Cell Chunk " + type + " : " + size + "b");
                         chunks[i] = CellChunk.Read(reader, colorDepth);
                         break;
                     case 0x2006:
-                        Console.WriteLine("Cell Extra Chunk " + type + " : " + size + "b");
                         chunks[i] = CellExtraChunk.Read(reader);
                         break;
                     case 0x2018:
-                        Console.WriteLine("Tags Chunk " + type + " : " + size + "b");
                         chunks[i] = TagsChunk.Read(reader);
                         break;
                     case 0x2019:
-                        Console.WriteLine("Palette Chunk " + type + " : " + size + "b");
                         chunks[i] = PaletteChunk.Read(reader);
                         break;
                     case 0x2020:
-                        Console.WriteLine("User Data Chunk " + type + " : " + size + "b");
                         chunks[i] = UserDataChunk.Read(reader);
                         break;
                     case 0x2022:
-                        Console.WriteLine("Slice Chunk " + type + " : " + size + "b");
                         chunks[i] = SliceChunk.Read(reader);
                         break;
                     default:
                         // ingoring data
-                        Console.WriteLine("Ignoring Chunk " + type + " : " + size + "b");
                         reader.BYTES((int)size);
                         break;
                 }
