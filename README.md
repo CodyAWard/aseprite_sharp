@@ -19,14 +19,20 @@ I wanted to take a crack at writing my own Aseprite Parser. This allows you to e
     {
           var streamReader = new StreamReader(fileStream);
           aseprite = AsepriteReader.Read(streamReader);
-          // you can now access the Header Data
-          // aseprite.Header
-          // or Frame Data
+          // you can now access the Header Data 'aseprite.Header'
+          // or Frame Data 
           foreach (var frame in aseprite.Frames)
           {
-              // you can get the Chunk Data from each frame
-              var palette = frame.TryGet<PaletteChunk>();
-              var cells = frame.TryGetAll<CellChunk>();
+              // you can try to get Chunk Data from each frame
+              if(frame.TryGet<PaletteChunk>(out var palette))
+              {
+                    // single components like a palette or layer
+              }
+              
+              if(frame.TryGetAll<CellChunk>(out var cells))
+              {
+                    // or multiple components like cells
+              }
           }
     }
     
