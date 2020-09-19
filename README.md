@@ -4,6 +4,7 @@
 
 #### Aseprite Resources
 https://www.aseprite.org/
+
 https://github.com/aseprite/aseprite/blob/master/docs/ase-file-specs.md
 
 #### Description
