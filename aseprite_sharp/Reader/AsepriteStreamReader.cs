@@ -2,13 +2,13 @@
 using System.IO.Compression;
 using System.Text;
 
-namespace aseprite_sharp
+namespace aseprite_sharp.Reader
 {
     /// <summary>
     /// Allows for reading the stream via the documentations methodology
     /// https://github.com/aseprite/aseprite/blob/master/docs/ase-file-specs.md
     /// </summary>
-    public class StreamReader
+    public class AsepriteStreamReader
     {
         private readonly BinaryReader reader;
 
@@ -18,7 +18,7 @@ namespace aseprite_sharp
             set => reader.BaseStream.Position = value;
         }
 
-        public StreamReader(Stream stream)
+        public AsepriteStreamReader(Stream stream)
         {
             reader = new BinaryReader(stream);
         }

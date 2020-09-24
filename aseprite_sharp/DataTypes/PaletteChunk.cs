@@ -1,4 +1,6 @@
-﻿namespace aseprite_sharp
+﻿using aseprite_sharp.Reader;
+
+namespace aseprite_sharp.DataTypes
 {
     public class PaletteEntry
     {
@@ -17,7 +19,7 @@
             Name = name;
         }
 
-        public static PaletteEntry Read(StreamReader reader, string defaultName)
+        public static PaletteEntry Read(AsepriteStreamReader reader, string defaultName)
         {
             //   WORD Entry flags:
             //             1 = Has name
@@ -49,7 +51,7 @@
             Entries = entries;
         }
 
-        public static PaletteChunk Read(StreamReader reader)
+        public static PaletteChunk Read(AsepriteStreamReader reader)
         {
             // DWORD New palette size(total number of entries)
             var entryCount = reader.DWORD();

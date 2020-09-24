@@ -1,4 +1,6 @@
-﻿namespace aseprite_sharp
+﻿using aseprite_sharp.Reader;
+
+namespace aseprite_sharp.DataTypes
 {
     public class Tag
     {
@@ -24,7 +26,7 @@
             PingPong = 2
         }
 
-        public static Tag Read(StreamReader reader)
+        public static Tag Read(AsepriteStreamReader reader)
         {
             //WORD From frame
             var fromFrame = reader.WORD();
@@ -57,7 +59,7 @@
             Tags = tags;
         }
 
-        public static TagsChunk Read(StreamReader reader)
+        public static TagsChunk Read(AsepriteStreamReader reader)
         {
             //WORD Number of tags
             var tagCount = reader.WORD();

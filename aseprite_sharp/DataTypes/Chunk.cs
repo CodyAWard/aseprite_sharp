@@ -1,4 +1,4 @@
-﻿namespace aseprite_sharp
+﻿namespace aseprite_sharp.DataTypes
 {
     public interface IChunk
     {

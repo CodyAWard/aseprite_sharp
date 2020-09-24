@@ -1,7 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>0.0.1</Version>
+    <Authors>Cody Ward</Authors>
+    <Product>aseprite_sharp</Product>
+    <Description>a simple c# aseprite file parser</Description>
+    <PackageProjectUrl>https://github.com/CodyAWard/aseprite_sharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/CodyAWard/aseprite_sharp</RepositoryUrl>
+    <RepositoryType></RepositoryType>
+    <PackageTags>aseprite</PackageTags>
   </PropertyGroup>
 
 </Project>

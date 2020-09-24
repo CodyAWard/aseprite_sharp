@@ -1,10 +1,11 @@
-﻿using System;
+﻿using aseprite_sharp.Reader;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace aseprite_sharp
+namespace aseprite_sharp.DataTypes
 {
-    public class Frame
+    public class FrameData
     {
         public uint BytesInFrame { get; }
         public ushort FrameDuration { get; }
@@ -28,14 +29,14 @@ namespace aseprite_sharp
             return chunks.Any();
         }
 
-        private Frame(uint bytesInFrame, ushort frameDuration, IChunk[] chunks)
+        private FrameData(uint bytesInFrame, ushort frameDuration, IChunk[] chunks)
         {
             BytesInFrame = bytesInFrame;
             FrameDuration = frameDuration;
             Chunks = chunks;
         }
 
-        public static Frame Read(StreamReader reader, ColorDepth colorDepth)
+        public static FrameData Read(AsepriteStreamReader reader, ColorDepth colorDepth)
         {
             // DWORD Bytes in this frame
             var bytesInFrame = reader.DWORD();
@@ -66,6 +67,7 @@ namespace aseprite_sharp
                 // WORD Chunk type
                 var type = reader.WORD();
                 // BYTE[] Chunk data
+                Console.WriteLine($"Reading Chunk Type: {type:X}");
                 switch (type)
                 {
                     case 0x2004:
@@ -98,7 +100,7 @@ namespace aseprite_sharp
                 reader.POS = startPos + size;
             }
 
-            return new Frame(bytesInFrame, frameDuration, chunks);
+            return new FrameData(bytesInFrame, frameDuration, chunks);
         }
     }
 }

@@ -1,7 +1,6 @@
-﻿using System;
-using System.IO.Compression;
+﻿using aseprite_sharp.Reader;
 
-namespace aseprite_sharp
+namespace aseprite_sharp.DataTypes
 {
     public class CellExtraChunk : IChunk
     {
@@ -20,7 +19,7 @@ namespace aseprite_sharp
             HeightOfTheCellInTheSprite = heightOfTheCellInTheSprite;
         }
 
-        public static CellExtraChunk Read(StreamReader reader)
+        public static CellExtraChunk Read(AsepriteStreamReader reader)
         {
             // DWORD Flags(set to zero)
             //   1 = Precise bounds are set
@@ -42,6 +41,7 @@ namespace aseprite_sharp
 
     public class CellChunk : IChunk
     {
+        public bool IsVisible { get; set; }
         public ushort LayerIndex{ get; }
         public short XPosition{ get; }
         public short YPosition{ get; }
@@ -76,7 +76,7 @@ namespace aseprite_sharp
             Pixels = pixels;
         }
 
-        public static CellChunk Read(StreamReader reader, ColorDepth colorDepth)
+        public static CellChunk Read(AsepriteStreamReader reader, ColorDepth colorDepth)
         {
             // WORD Layer index(see NOTE.2)
             var layerIndex = reader.WORD();

@@ -1,4 +1,6 @@
-﻿namespace aseprite_sharp
+﻿using aseprite_sharp.Reader;
+
+namespace aseprite_sharp.DataTypes
 {
     public class SliceKey
     {
@@ -29,7 +31,7 @@
             PivotY = pivotY;
         }
 
-        public static SliceKey Read(StreamReader reader, int flag)
+        public static SliceKey Read(AsepriteStreamReader reader, int flag)
         {
             //   DWORD     Frame number(this slice is valid from
             //             this frame to the end of the animation)
@@ -88,7 +90,7 @@
             Keys = keys;
         }
 
-        public static SliceChunk Read(StreamReader reader)
+        public static SliceChunk Read(AsepriteStreamReader reader)
         {
             // DWORD Number of "slice keys"
             var keyCount = reader.DWORD();

@@ -1,6 +1,7 @@
-﻿using System;
+﻿using aseprite_sharp.Reader;
+using System;
 
-namespace aseprite_sharp
+namespace aseprite_sharp.DataTypes
 {
     public class LayerChunk : IChunk
     {
@@ -62,7 +63,7 @@ namespace aseprite_sharp
             Divide = 18
         }
 
-        public static LayerChunk Read(StreamReader reader)
+        public static LayerChunk Read(AsepriteStreamReader reader)
         {
             // WORD Flags:
             //               1 = Visible

@@ -1,4 +1,6 @@
-﻿namespace aseprite_sharp
+﻿using aseprite_sharp.Reader;
+
+namespace aseprite_sharp.DataTypes
 {
     public class UserDataChunk : IChunk
     {
@@ -26,7 +28,7 @@
             A = a;
         }
 
-        public static UserDataChunk Read(StreamReader reader)
+        public static UserDataChunk Read(AsepriteStreamReader reader)
         {
             //DWORD Flags
             //  1 = Has text

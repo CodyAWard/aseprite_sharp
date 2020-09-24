@@ -1,4 +1,6 @@
-﻿namespace aseprite_sharp
+﻿using aseprite_sharp.Reader;
+
+namespace aseprite_sharp.DataTypes
 {
     public class Header
     {
@@ -49,7 +51,7 @@
             PixelRatio = pixelRatio;
         }
 
-        public static Header Read(StreamReader reader)
+        public static Header Read(AsepriteStreamReader reader)
         {
             // DWORD       File size
             var fileSize = reader.DWORD();
